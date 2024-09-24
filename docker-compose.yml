@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  cookbook-api:
+    image: bitnami/postgresql
+    ports:
+      - 5555:5432
+    environment:
+      - POSTGRESQL_USERNAME=matheus
+      - POSTGRESQL_PASSWORD=admin123
+      - POSTGRESQL_DATABASE=cookbookapi
