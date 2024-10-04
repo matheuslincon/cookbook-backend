@@ -22,4 +22,14 @@ export class InMemoryRecipeRepository implements RecipeRepository {
 
     return recipe
   }
+
+  async findById(id: number) {
+    const recipe = this.items.find((item) => item.id === id)
+
+    if (!recipe) {
+      return null
+    }
+
+    return recipe
+  }
 }
