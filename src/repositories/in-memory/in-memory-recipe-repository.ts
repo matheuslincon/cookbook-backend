@@ -32,4 +32,8 @@ export class InMemoryRecipeRepository implements RecipeRepository {
 
     return recipe
   }
+
+  async findAllByUserId(id: number): Promise<Recipe[]> {
+    return this.items.filter((recipe) => recipe.user_id === id)
+  }
 }
