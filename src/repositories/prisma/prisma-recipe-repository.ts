@@ -3,6 +3,20 @@ import { Prisma, Recipe } from '@prisma/client'
 import { RecipeRepository } from '../recipe-repository'
 
 export class PrismaRecipeRepository implements RecipeRepository {
+  async update(
+    id: number,
+    data: Partial<Prisma.RecipeUncheckedCreateInput>,
+  ): Promise<Recipe> {
+    const recipe = await prisma.recipe.update({
+      where: {
+        id,
+      },
+      data,
+    })
+
+    return recipe
+  }
+
   async findAllByUserId(id: number): Promise<Recipe[]> {
     const recipes = await prisma.recipe.findMany({
       where: {
