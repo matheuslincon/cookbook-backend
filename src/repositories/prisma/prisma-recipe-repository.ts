@@ -3,6 +3,14 @@ import { Prisma, Recipe } from '@prisma/client'
 import { RecipeRepository } from '../recipe-repository'
 
 export class PrismaRecipeRepository implements RecipeRepository {
+  async delete(id: number): Promise<void> {
+    await prisma.recipe.delete({
+      where: {
+        id,
+      },
+    })
+  }
+
   async update(
     id: number,
     data: Partial<Prisma.RecipeUncheckedCreateInput>,

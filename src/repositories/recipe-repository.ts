@@ -8,4 +8,5 @@ export interface RecipeRepository {
     id: number,
     data: Partial<Prisma.RecipeUncheckedCreateInput>,
   ): Promise<Recipe>
+  delete(id: number): Promise<void>
 }
