@@ -78,4 +78,14 @@ export class InMemoryRecipeRepository implements RecipeRepository {
 
     return updatedRecipe
   }
+
+  async delete(id: number): Promise<void> {
+    const recipeIndex = this.items.findIndex((recipe) => recipe.id === id)
+
+    if (recipeIndex === -1) {
+      throw new Error('Recipe not found')
+    }
+
+    this.items.splice(recipeIndex, 1)
+  }
 }
